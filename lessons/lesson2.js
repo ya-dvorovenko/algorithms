@@ -85,3 +85,27 @@ console.log(`${(new Date() - now) / 1000}s`);
 // a = a - b; // 8
 
 // console.log({ a, b });
+
+function indexEqualsValue(nums) {
+  if (!Array.isArray(nums)) {
+    return -1;
+  }
+  let value = -1;
+  if (!nums.length) {
+    return value;
+  }
+  if (nums.length === 1) {
+    if (nums[0] === 0) {
+      return (value = nums[0]);
+    }
+    return value;
+  }
+  // TODO: need to use binary search here
+  for (let i = 0; i <= nums.length; i++) {
+    console.log(nums[i], i);
+    if (nums[i] === i) {
+      return (value = nums[i]);
+    }
+  }
+  return value;
+}
