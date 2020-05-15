@@ -98,9 +98,45 @@ class List {
     console.log(values.join(" → "));
   }
 
-  printReverse() {}
+  static reverseList(list) {
+    let prev;
+    let tmp;
+    let node = list;
+    while (node) {
+      tmp = node.next;
+      node.next = prev;
+      prev = node;
+      node = tmp;
+    }
+    return prev;
+  }
 
-  reverse() {}
+  printReverse() {
+    // Solution 1
+    // const values = [];
+    // for (let curr = this.list; curr !== null; curr = curr.next) {
+    //   values.push(curr.value);
+    // }
+    // values.reverse();
+    // console.log(values.join(" → "));
+    // Solution 2
+    // const values = [];
+    // for (let curr = this.list; curr !== null; curr = curr.next) {
+    //   values.unshift(curr.value);
+    // }
+    // console.log(values.join(" → "));
+    // Solution 3
+    const reversedList = List.reverseList(this.list);
+    const values = [];
+    for (let curr = reversedList; curr !== undefined; curr = curr.next) {
+      values.push(curr.value);
+    }
+    console.log(values.join(" → "));
+  }
+
+  reverse(list) {
+    return List.reverseList(list);
+  }
 }
 
 const l1 = new List();
@@ -122,8 +158,10 @@ l1.add(46);
 
 console.log("LIST 1");
 l1.print(); // 45→76→12→33→2→61→null
-
-l1.remove(0);
-
-console.log("LIST 1");
-l1.print(); // 76→12→33→2→61→null
+console.log("LIST 2");
+l1.printReverse(); // 76→12→33→2→61→null
+const l2 = new List();
+l2.add(1);
+l2.add(2);
+l2.add(3);
+console.log(l2.reverse(l2.list));
