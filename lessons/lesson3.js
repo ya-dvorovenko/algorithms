@@ -30,7 +30,7 @@
 //        /   \     /   \
 //4      2    7    2
 
-const heapify = (i, arr, length) => {
+const heapify = (i, arr) => {
   let left = 2 * i + 1;
   let right = 2 * i + 2;
   let index = i;
